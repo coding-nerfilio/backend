@@ -1,6 +1,7 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import { detectEnviroment } from "./src/utils/detectEnviroment";
+import websockets from "./src/websockets";
 
 dotenv.config();
 
@@ -11,6 +12,8 @@ app.get("/", (req: Request, res: Response) => {
 	res.send("ttt battle royale");
 });
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
 	console.log(`STARTING ${detectEnviroment.isProduction() ? "PRODUCTION" : "DEVELOPMENT"} ENVIRONMENT`);
 });
+
+websockets(server);
