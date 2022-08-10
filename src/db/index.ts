@@ -1,13 +1,7 @@
-import { database } from "firebase-admin";
+import Lobby from "./lobby";
 
 const DB = {
-	createNewLobby: async () => {
-		database()
-			.ref("/")
-			.push("test")
-			.get()
-			.then((d) => console.log(d.key));
-	},
+	Lobby: Lobby,
 };
 
 export default DB;
